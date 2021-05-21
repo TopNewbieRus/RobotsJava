@@ -14,9 +14,9 @@ import java.util.Collections;
  */
 public class LogWindowSource
 {
-    private int m_iQueueLength;
-    
-    private ArrayList<LogEntry> m_messages;
+    private final int m_iQueueLength;
+
+    private final ArrayList<LogEntry> m_messages;
     private final ArrayList<LogChangeListener> m_listeners;
     private volatile LogChangeListener[] m_activeListeners;
     
@@ -61,6 +61,7 @@ public class LogWindowSource
                 }
             }
         }
+        assert activeListeners != null;
         for (LogChangeListener listener : activeListeners)
         {
             listener.onLogChanged();
